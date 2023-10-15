@@ -1,7 +1,7 @@
 
 const Home = () => {
     return (
-        <div>I am Home</div>
+        <div className="flex grow justify-center items-center">I am Home</div>
     )
 }
 
