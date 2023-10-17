@@ -3,6 +3,9 @@ import App from "../App";
 import Home from "./Home";
 import Shop from "./Shop";
 import Cart from "./Cart";
+import ItemCard from "./ItemCard";
+import fakeObjectAray from "./fakeData";
+
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -16,22 +19,18 @@ const Router = () => {
         },
         {
           path: "/shop",
-          element: <Shop></Shop>
+          element: <Shop></Shop>,
         },
         {
-          path: "/Cart",
+          path: "/cart",
           element: <Cart></Cart>
+        },
+        {
+          path: "/shop/:item",
+          element: <ItemCard></ItemCard>
         }
       ]
     },
-    // {
-    //     path: "/shop",
-    //     element: <Shop></Shop>
-    // },
-    // {
-    //     path: "/cart",
-    //     element: <Cart></Cart>
-    // }
   ]);
 
   return <RouterProvider router={router}/>
