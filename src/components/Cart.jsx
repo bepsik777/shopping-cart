@@ -1,6 +1,6 @@
 import { fakeAddedarray } from "./fakeData";
 
-const TableRow = ({el}) => {
+const TableRow = ({ el }) => {
   return (
     // <div className="w-full grid grid-cols-4 py-2 place-items-center">
     //     <p className="py-2">{el.name}</p>
@@ -9,13 +9,17 @@ const TableRow = ({el}) => {
     //     <button>remove</button>
     // </div>
     <tr className="">
-        <td className="px-2 py-1 border-2">{el.name}</td>
-        <td className="px-2 py-1 border-2 text-right">{el.count}</td>
-        <td className="px-2 py-1 border-2 text-right">{el.price * el.count}</td>
-        <td className="px-2 py-1"><button className="border-sky-600 bg-sky-400 border-2 p-1 rounded-md">remove</button></td>
+      <td className="px-2 py-1 border-2">{el.name}</td>
+      <td className="px-2 py-1 border-2 text-right">{el.count}</td>
+      <td className="px-2 py-1 border-2 text-right">{el.price * el.count}</td>
+      <td className="px-2 py-1">
+        <button className="border-sky-600 bg-sky-400 border-2 p-1 rounded-md">
+          remove
+        </button>
+      </td>
     </tr>
-  )
-}
+  );
+};
 
 const Cart = () => {
   console.log(fakeAddedarray);
@@ -36,32 +40,38 @@ const Cart = () => {
   };
 
   const finalArray = createfinalArray(fakeAddedarray);
-  const total = finalArray.reduce((cv, acc) => {
-    console.log(cv, acc);
-    return (cv.price * cv.count) + (acc.price * acc.count)
-  })
-  console.log(total, 'total')
-  
+  const total = finalArray
+    .map((el) => el.price * el.count)
+    .reduce((acc, cv) => acc + cv);
+
   return (
     <main className="h-full bg-red-400 grow flex flex-col justify-center items-center">
       <table className="w-[80%] p-10">
         <colgroup>
-          <col className="border-2"/>
-          <col className="border-2"/>
-          <col className="border-2"/>
+          <col className="border-2" />
+          <col className="border-2" />
+          <col className="border-2" />
           <col />
         </colgroup>
-        <tr className="p-2">
-          <th className="px-2 py-1 border-2 text-left">Name</th>
-          <th className="px-2 py-1 border-2 text-right">Amount</th>
-          <th className="px-2 py-1 border-2 text-right">Price</th>
-        </tr>
-        {finalArray.map(el => <TableRow el={el} key={el.name}></TableRow>)}
+        <thead>
+          <tr className="p-2">
+            <th className="px-2 py-1 border-2 text-left">Name</th>
+            <th className="px-2 py-1 border-2 text-right">Amount</th>
+            <th className="px-2 py-1 border-2 text-right">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {finalArray.map((el) => (
+            <TableRow el={el} key={el.name}></TableRow>
+          ))}
+        </tbody>
       </table>
+      <div className="flex gap-4 w-1/3 ml-24 mt-10 justify-end items-center pr-2 py-2">
+        <p>Total: {total}</p>
+        <button className="bg-violet-600 text-white p-1">Checkout</button>
+      </div>
     </main>
   );
 };
-
-
 
 export default Cart;
