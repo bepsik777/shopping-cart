@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 
 const ItemCard = () => {
   const [amount, setAmount] = useState(0)
+  const [list, , setCart] = useOutletContext()
   const item = useLoaderData()
 
   const handleIncrease = () => {
@@ -67,7 +68,7 @@ const ItemCard = () => {
                 </svg>
               </button>
             </div>
-            <button className="border-2 border-black py-2 px-10">
+            <button onClick={() => setCart(item, amount, setAmount)} className="border-2 border-black py-2 px-10">
               Add to cart
             </button>
           </div>

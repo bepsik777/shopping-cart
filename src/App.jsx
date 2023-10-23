@@ -24,11 +24,26 @@ function App() {
       return () => controller.abort()
   },[]);
 
+  const addToCart = (item, amount, setAmount) => {
+    if (amount === 0) return;
+    if (amount === 1) {
+      setCart([...cart, item]);
+    }
+    if (amount > 1) {
+      const arrayToAdd = []
+      for (let i = 0; i < amount; i++) {
+        arrayToAdd.push(item)
+      }
+      setCart([...cart, ...arrayToAdd])
+    }
+    setAmount(0);
+  };
+
   return (
     <div className="bg-blue-300 min-h-screen max-w-screen flex flex-col lg:h-screen">
       <Header list={cart}></Header>
       {/* <Outlet context={[list, setList, cart, setCart]} /> */}
-      {!list ? <div>Loading...</div> : <Outlet context={[list, setList, cart, setCart]}></Outlet>}
+      {!list ? <div>Loading...</div> : <Outlet context={[list, setList, addToCart, cart]}></Outlet>}
       <Footer></Footer>
     </div>
   );

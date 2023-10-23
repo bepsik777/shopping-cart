@@ -1,16 +1,9 @@
 import { useOutletContext } from "react-router-dom";
-import { fakeAddedarray } from "./fakeData";
 
 const TableRow = ({ el }) => {
   return (
-    // <div className="w-full grid grid-cols-4 py-2 place-items-center">
-    //     <p className="py-2">{el.name}</p>
-    //     <p className="py-2">{el.count}</p>
-    //     <p className="py-2">{el.price * el.count}</p>
-    //     <button>remove</button>
-    // </div>
     <tr className="">
-      <td className="px-2 py-1 border-2">{el.name}</td>
+      <td className="px-2 py-1 border-2">{el.title}</td>
       <td className="px-2 py-1 border-2 text-right">{el.count}</td>
       <td className="px-2 py-1 border-2 text-right">{el.price * el.count}</td>
       <td className="px-2 py-1">
@@ -23,26 +16,42 @@ const TableRow = ({ el }) => {
 };
 
 const Cart = () => {
-  const list = useOutletContext()
-  console.log(list)
-  console.log(fakeAddedarray);
+  const [, , setCart, cart] = useOutletContext();
+  console.log(cart, "cart");
   const createfinalArray = (array) => {
     let counterArray = [];
     let finalArray = [];
     for (let i = 0; i < array.length; i++) {
-      array[i].count = 1;
-      if (counterArray.indexOf(array[i].name) === -1) {
-        counterArray.push(array[i].name);
-        finalArray.push(array[i]);
+      console.log(finalArray, "final array");
+      // array[i].count = 1;
+      if (counterArray.indexOf(array[i].id) === -1) {
+        counterArray.push(array[i].id);
+        // finalArray.push(array[i]);
+        finalArray.push({
+          title: array[i].title,
+          price: array[i].price,
+          count: 1,
+          id: array[i].id,
+        });
       } else {
-        const found = finalArray.find((el) => el.name === array[i].name);
+        const found = finalArray.find((el) => el.id === array[i].id);
+        console.log(found.count);
         found.count += 1;
+        console.log(found.count);
       }
     }
     return finalArray;
   };
 
-  const finalArray = createfinalArray(fakeAddedarray);
+  if (cart.length === 0)
+    return (
+      <div className="h-full bg-red-400 grow flex flex-col justify-center items-center">
+        No item in cart yet
+      </div>
+    );
+
+  const finalArray = createfinalArray(cart);
+  console.log(finalArray, "final array");
   const total = finalArray
     .map((el) => el.price * el.count)
     .reduce((acc, cv) => acc + cv);
@@ -65,7 +74,7 @@ const Cart = () => {
         </thead>
         <tbody>
           {finalArray.map((el) => (
-            <TableRow el={el} key={el.name}></TableRow>
+            <TableRow el={el} key={el.title}></TableRow>
           ))}
         </tbody>
       </table>

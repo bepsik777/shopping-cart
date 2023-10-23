@@ -73,28 +73,28 @@ const Card = ({ item, addToCart }) => {
 };
 
 const Shop = () => {
-  const [list, , cart, setCart] = useOutletContext();
+  const [list, , setCart] = useOutletContext();
 
-  const addToCart = (item, amount, setAmount) => {
-    if (amount === 0) return;
-    if (amount === 1) {
-      setCart([...cart, item]);
-    }
-    if (amount > 1) {
-      const arrayToAdd = []
-      for (let i = 0; i < amount; i++) {
-        arrayToAdd.push(item)
-      }
-      setCart([...cart, ...arrayToAdd])
-    }
-    setAmount(0);
-  };
+  // const addToCart = (item, amount, setAmount) => {
+  //   if (amount === 0) return;
+  //   if (amount === 1) {
+  //     setCart([...cart, item]);
+  //   }
+  //   if (amount > 1) {
+  //     const arrayToAdd = []
+  //     for (let i = 0; i < amount; i++) {
+  //       arrayToAdd.push(item)
+  //     }
+  //     setCart([...cart, ...arrayToAdd])
+  //   }
+  //   setAmount(0);
+  // };
 
   console.log(list);
   return (
     <main className="bg-red-400 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
       {list.map((item) => {
-        return <Card item={item} key={item.title} addToCart={addToCart} />;
+        return <Card item={item} key={item.title} addToCart={setCart} />;
       })}
     </main>
   );
