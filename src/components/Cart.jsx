@@ -1,3 +1,4 @@
+import { useOutletContext } from "react-router-dom";
 import { fakeAddedarray } from "./fakeData";
 
 const TableRow = ({ el }) => {
@@ -22,6 +23,8 @@ const TableRow = ({ el }) => {
 };
 
 const Cart = () => {
+  const list = useOutletContext()
+  console.log(list)
   console.log(fakeAddedarray);
   const createfinalArray = (array) => {
     let counterArray = [];

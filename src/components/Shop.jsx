@@ -1,23 +1,23 @@
 import { Link, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 
-const Card = ({ item }) => {
-  const [amount, setAmount] = useState(0)
+const Card = ({ item, addToCart }) => {
+  const [amount, setAmount] = useState(0);
 
   const handleIncrease = () => {
     const newAmount = amount + 1;
-    setAmount(newAmount) 
-  }
+    setAmount(newAmount);
+  };
 
   const handleDecrease = () => {
-    if (amount === 0) return 
+    if (amount === 0) return;
     const newAmount = amount - 1;
-    setAmount(newAmount)
-  }
+    setAmount(newAmount);
+  };
 
   return (
     <div>
-      <Link to={`${item.title}`}>
+      <Link to={`${item.id}`}>
         <img
           src={item.image ? item.image : ""}
           alt={item.title}
@@ -62,7 +62,10 @@ const Card = ({ item }) => {
           </svg>
         </button>
       </div>
-      <button className="w-full mt-2 bg-slate-400 px-2 py-1 hover:bg-slate-500 hover:text-white">
+      <button
+        onClick={() => addToCart(item, amount, setAmount)}
+        className="w-full mt-2 bg-slate-400 px-2 py-1 hover:bg-slate-500 hover:text-white"
+      >
         Add to cart
       </button>
     </div>
@@ -70,12 +73,28 @@ const Card = ({ item }) => {
 };
 
 const Shop = () => {
-  const [list, , , setCart] = useOutletContext()
-  console.log(list)
+  const [list, , cart, setCart] = useOutletContext();
+
+  const addToCart = (item, amount, setAmount) => {
+    if (amount === 0) return;
+    if (amount === 1) {
+      setCart([...cart, item]);
+    }
+    if (amount > 1) {
+      const arrayToAdd = []
+      for (let i = 0; i < amount; i++) {
+        arrayToAdd.push(item)
+      }
+      setCart([...cart, ...arrayToAdd])
+    }
+    setAmount(0);
+  };
+
+  console.log(list);
   return (
     <main className="bg-red-400 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
       {list.map((item) => {
-        return <Card item={item} key={item.title} />;
+        return <Card item={item} key={item.title} addToCart={addToCart} />;
       })}
     </main>
   );

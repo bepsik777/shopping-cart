@@ -4,7 +4,6 @@ import Home from "./Home";
 import Shop from "./Shop";
 import Cart from "./Cart";
 import ItemCard from "./ItemCard";
-import fakeObjectAray from "./fakeData";
 
 
 const Router = () => {
@@ -27,7 +26,10 @@ const Router = () => {
         },
         {
           path: "/shop/:item",
-          element: <ItemCard></ItemCard>
+          element: <ItemCard></ItemCard>,
+          loader: async ({params}) => {
+            return fetch(`https://fakestoreapi.com/products/${params.item}`)
+          }
         }
       ]
     },

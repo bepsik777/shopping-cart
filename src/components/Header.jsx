@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Header = ({list}) => {
+
   return (
     <header className="px-5 py-8 bg-pink-300 flex justify-center items-center h-[10%]">
       <nav className="flex justify-around gap-12 md:w-1/3 md:grid md:grid-cols-3 md:place-items-center">
