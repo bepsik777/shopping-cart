@@ -7,9 +7,16 @@ function App() {
   const [list, setList] = useState([]);
   const [cart, setCart] = useState([])
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    const controller = new AbortController();
+    const signal = controller.signal
+
+    fetch("https://fakestoreapi.com/products", {
+      signal: signal
+    })
       .then((res) => res.json())
       .then((json) => setList(json));
+
+      return () => controller.abort()
   },[]);
 
   return (
