@@ -18,15 +18,15 @@ const Card = ({ item }) => {
 
   return (
     <div>
-      <Link to={`${item.name}`}>
+      <Link to={`${item.title}`}>
         <img
-          src={item.url ? item.url : ""}
+          src={item.image ? item.image : ""}
           alt=""
           className="w-60 h-72 border-black border-2"
         />
       </Link>
       <p className="w-60 min-h-max border-black border-2 p-4">
-        {item.description}
+        {item.title}
       </p>
       <div className="w-full flex justify-center gap-4 mt-3 border-black border-2">
         <button onClick={handleDecrease}>
@@ -71,10 +71,12 @@ const Card = ({ item }) => {
 };
 
 const Shop = () => {
+  const [list, setList, cart, setCart] = useOutletContext()
+  console.log(list)
   return (
     <main className="bg-red-400 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
-      {fakeObjectAray.map((item) => {
-        return <Card item={item} key={1} />;
+      {list.map((item) => {
+        return <Card item={item} key={item.title} />;
       })}
     </main>
   );
