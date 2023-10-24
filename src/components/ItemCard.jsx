@@ -18,21 +18,22 @@ const ItemCard = () => {
   }
   
   return (
-    <div className="bg-fuchsia-500 flex grow items-center justify-center w-screen h-screen lg:min-h-[80%] py-20 lg:py-10 lg:px-0">
-      <div className="px-2 h-screen w-full flex flex-col md:w-[80%] lg:flex-row lg:w-[1000px] lg:h-[80%] bg-white">
-        <div className="min-h-1/2 h-1/2 max-w-full bg-white py-14 lg:p-10 lg:h-full lg:w-1/2">
-          <img src={item.image} className="h-full w-full object-contain"></img>
+    <div className="bg-white flex grow items-center justify-center py-20 lg:py-10 lg:px-20 ">
+      <div className="px-2 flex flex-col bg-white lg:flex-row lg:h-full lg:justify-center lg:items-center">
+        <div className="py-14 px-10 lg:p-10">
+          <img src={item.image} className="object-contain lg:h-full lg:max-h-[400px] lg:max-w-[400px]"></img>
         </div>
-        <div className="pt-4 pb-2 justify-around min-h-1/2 max-w-full bg-white lg:block lg:p-5 lg:min-h-full lg:w-1/2">
-          <h2 className="text-xl text-left px-10 lg:text-2xl lg:p-10 lg:text-left">
+        <div className="pt-4 pb-2 justify-around bg-white lg:block lg:p-5">
+          <h2 className="text-xl text-left px-10 mb-10 lg:text-2xl lg:p-10 lg:pb-0 lg:text-left">
             {item.title}
           </h2>
+          <hr />
           <p className="px-10 pt-2 lg:text-xl lg:p-10">
             {item.description}
           </p>
-          <div className="flex justify-between p-10">
-            <div className="border-black border-2 flex w-1/3 lg:w-52">
-              <button onClick={handleDecrease} className="w-1/3 border-r-2 border-black flex justify-center items-center lg:p-2">
+          <div className="flex justify-between p-10 lg:justify-start lg:gap-5 lg:pt-28">
+            <div className="border-black border-2 flex">
+              <button onClick={handleDecrease} className=" border-r-2 border-black flex justify-center items-center lg:p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -48,10 +49,10 @@ const ItemCard = () => {
                   />
                 </svg>
               </button>
-              <div className="w-1/3 border-black flex justify-center items-center lg:p-2">
+              <div className=" border-black flex justify-center items-center w-6 lg:p-2">
                 {amount}
               </div>
-              <button onClick={handleIncrease} className="w-1/3 border-l-2 border-black flex justify-center items-center lg:p-2">
+              <button onClick={handleIncrease} className=" border-l-2 border-black flex justify-center items-center lg:p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -68,7 +69,7 @@ const ItemCard = () => {
                 </svg>
               </button>
             </div>
-            <button onClick={() => setCart(item, amount, setAmount)} className="border-2 border-black py-2 px-10 lg:h-full">
+            <button onClick={() => setCart(item, amount, setAmount)} className="border-2 border-black py-2 px-10">
               Add to cart
             </button>
           </div>
