@@ -21,10 +21,10 @@ const Card = ({ item, addToCart }) => {
         <img
           src={item.image ? item.image : ""}
           alt={item.title}
-          className="bg-white object-contain w-60 h-72 border-black border-2 p-2"
+          className="bg-white object-contain w-60 h-72 p-2 rounded-t-md"
         />
       </Link>
-      <p className="w-60 h-28 border-black border-2 p-4 overflow-y-auto">
+      <p className="w-60 h-28 bg-sky-600 p-4 overflow-y-auto rounded-b-md">
         {item.title}
       </p>
       <div className="w-full flex justify-center gap-4 mt-3 border-black border-2">
@@ -92,7 +92,7 @@ const Shop = () => {
 
   console.log(list);
   return (
-    <main className="bg-red-400 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+    <main className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
       {list.map((item) => {
         return <Card item={item} key={item.title} addToCart={setCart} />;
       })}

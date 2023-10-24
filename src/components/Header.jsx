@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Header = ({list}) => {
 
   return (
-    <header className="px-5 py-8 bg-pink-300 flex justify-center items-center h-[10%]">
+    <header className="px-5 py-8 bg-red-300 flex justify-center items-center h-[10%]">
       <nav className="flex justify-around gap-12 md:w-1/3 md:grid md:grid-cols-3 md:place-items-center">
-        <Link to="/" className="text-2xl hover:text-blue-100 hover:bg-pink-600">
+        <Link to="/" className="text-2xl hover:text-blue-100 hover:bg-pink-600 hover:px-2">
           Home
         </Link>
-        <Link to="shop" className="text-2xl hover:text-blue-100 hover:bg-pink-600">
+        <Link to="shop" className="text-2xl hover:text-blue-100 hover:bg-pink-600 hover:px-2">
           Shop
         </Link>
         <Link to="cart" className="flex items-center text-3xl relative md:h-full hover:text-blue-100">

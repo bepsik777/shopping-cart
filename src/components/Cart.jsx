@@ -45,7 +45,7 @@ const Cart = () => {
 
   if (cart.length === 0)
     return (
-      <div className="h-full bg-red-400 grow flex flex-col justify-center items-center">
+      <div className="h-full grow flex flex-col justify-center items-center">
         No item in cart yet
       </div>
     );
@@ -57,7 +57,7 @@ const Cart = () => {
     .reduce((acc, cv) => acc + cv);
 
   return (
-    <main className="h-full bg-red-400 grow flex flex-col justify-center items-center">
+    <main className="h-full  grow flex flex-col justify-center items-center">
       <table className="w-[80%] p-10">
         <colgroup>
           <col className="border-2" />

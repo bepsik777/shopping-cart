@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <div className="bg-blue-300 min-h-screen max-w-screen flex flex-col lg:h-screen">
+    <div className="bg-red-300 min-h-screen max-w-screen flex flex-col">
       <Header list={cart}></Header>
       {/* <Outlet context={[list, setList, cart, setCart]} /> */}
       {!list ? <div>Loading...</div> : <Outlet context={[list, setList, addToCart, cart]}></Outlet>}
