@@ -25,7 +25,7 @@ const Card = ({ item, addToCart }) => {
           className="bg-white object-contain w-60 h-72 p-2 rounded-t-md"
         />
       </Link>
-      <p className="w-60 h-28 bg-sky-600 p-4 overflow-y-auto rounded-b-md">
+      <p className="w-60 h-28 bg-pink-300 p-4 overflow-y-auto rounded-b-md">
         {item.title}
       </p>
       <div className="w-full flex justify-center gap-4 mt-3 border-black border-2">
@@ -65,7 +65,7 @@ const Card = ({ item, addToCart }) => {
       </div>
       <button
         onClick={() => addToCart(item, amount, setAmount)}
-        className="w-full mt-2 bg-slate-400 px-2 py-1 hover:bg-slate-500 hover:text-white"
+        className="w-full mt-2 bg-pink-300 px-2 py-1 hover:bg-pink-700 hover:text-white"
       >
         Add to cart
       </button>
