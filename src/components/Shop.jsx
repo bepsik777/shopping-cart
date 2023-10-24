@@ -1,5 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 import { useState } from "react";
+import PropTypes from 'prop-types'
 
 const Card = ({ item, addToCart }) => {
   const [amount, setAmount] = useState(0);
@@ -75,22 +76,6 @@ const Card = ({ item, addToCart }) => {
 const Shop = () => {
   const [list, , setCart] = useOutletContext();
 
-  // const addToCart = (item, amount, setAmount) => {
-  //   if (amount === 0) return;
-  //   if (amount === 1) {
-  //     setCart([...cart, item]);
-  //   }
-  //   if (amount > 1) {
-  //     const arrayToAdd = []
-  //     for (let i = 0; i < amount; i++) {
-  //       arrayToAdd.push(item)
-  //     }
-  //     setCart([...cart, ...arrayToAdd])
-  //   }
-  //   setAmount(0);
-  // };
-
-  console.log(list);
   return (
     <main className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
       {list.map((item) => {
@@ -99,5 +84,16 @@ const Shop = () => {
     </main>
   );
 };
+
+Card.propTypes = {
+  item: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.object
+    ])
+  ),
+  addToCart: PropTypes.func,
+}
 
 export default Shop;

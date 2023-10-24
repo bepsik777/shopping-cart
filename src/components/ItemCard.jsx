@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const ItemCard = () => {
   const [amount, setAmount] = useState(0)
-  const [list, , setCart] = useOutletContext()
+  const [, , setCart] = useOutletContext()
   const item = useLoaderData()
 
   const handleIncrease = () => {

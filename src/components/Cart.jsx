@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 const TableRow = ({ el, handleRemove }) => {
   return (
@@ -22,11 +23,8 @@ const Cart = () => {
     let counterArray = [];
     let finalArray = [];
     for (let i = 0; i < array.length; i++) {
-      console.log(finalArray, "final array");
-      // array[i].count = 1;
       if (counterArray.indexOf(array[i].id) === -1) {
         counterArray.push(array[i].id);
-        // finalArray.push(array[i]);
         finalArray.push({
           title: array[i].title,
           price: array[i].price,
@@ -35,9 +33,7 @@ const Cart = () => {
         });
       } else {
         const found = finalArray.find((el) => el.id === array[i].id);
-        console.log(found.count);
         found.count += 1;
-        console.log(found.count);
       }
     }
     return finalArray;
@@ -51,7 +47,6 @@ const Cart = () => {
 
   if (cart.length !== 0) {
     const finalArray = createfinalArray(cart);
-    console.log(finalArray, "final array");
     const total = finalArray
       .map((el) => el.price * el.count)
       .reduce((acc, cv) => acc + cv);
@@ -91,5 +86,16 @@ const Cart = () => {
     </div>
   );
 };
+
+TableRow.propTypes = {
+  el: PropTypes.objectOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ])
+  ),
+  handleRemove: PropTypes.func,
+}
+
 
 export default Cart;
