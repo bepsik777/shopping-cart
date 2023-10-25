@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Header = ({list}) => {
 
   return (
-    <header className="px-5 py-8 bg-rose-200 flex justify-center items-center h-[10%]">
+    <header className="px-5 py-8 bg-rose-600 flex justify-center items-center h-[10%]">
       <nav className="flex justify-around gap-12 md:w-1/3 md:grid md:grid-cols-3 md:place-items-center">
         <Link to="/" className="text-2xl hover:text-blue-100 hover:bg-pink-600 hover:px-2">
           Home

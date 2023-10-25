@@ -18,7 +18,7 @@ const ItemCard = () => {
   }
   
   return (
-    <div className="bg-white flex grow items-center justify-center py-20 lg:py-10 lg:px-20 ">
+    <main className="bg-white flex grow items-center justify-center py-20 lg:py-10 lg:px-20 ">
       <div className="px-2 flex flex-col bg-white lg:flex-row lg:h-full lg:justify-center lg:items-center">
         <div className="py-14 px-10 lg:p-10">
           <img src={item.image} className="object-contain lg:h-full lg:max-h-[400px] lg:max-w-[400px]"></img>
@@ -75,7 +75,7 @@ const ItemCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
