@@ -76,9 +76,11 @@ const Card = ({ item, addToCart }) => {
 const Shop = () => {
   const [list, , setCart] = useOutletContext();
 
+
   return (
     <main className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
-      {list.map((item) => {
+      {list.length === 0 ? <div>This is shop</div>
+      : list.map((item) => {
         return <Card item={item} key={item.title} addToCart={setCart} />;
       })}
     </main>

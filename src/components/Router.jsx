@@ -34,6 +34,7 @@ const Router = () => {
       ]
     },
   ]);
+  console.log(router.routes)
 
   return <RouterProvider router={router}/>
 };

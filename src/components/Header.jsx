@@ -12,7 +12,7 @@ const Header = ({list}) => {
         <Link to="shop" className="text-2xl hover:text-blue-100 hover:bg-pink-600 hover:px-2">
           Shop
         </Link>
-        <Link to="cart" className="flex items-center text-3xl relative md:h-full hover:text-blue-100">
+        <Link to="cart" aria-label="Cart" className="flex items-center text-3xl relative md:h-full hover:text-blue-100">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

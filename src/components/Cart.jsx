@@ -8,7 +8,7 @@ const TableRow = ({ el, handleRemove }) => {
       <td className="px-2 py-1 border-2 text-right">{el.count}</td>
       <td className="px-2 py-1 border-2 text-right">{el.price * el.count}</td>
       <td className="px-2 py-1">
-        <button className="border-sky-600 bg-sky-400 border-2 p-1 rounded-md" data-elementid={el.id} onClick={(e) => handleRemove(e)}>
+        <button className="border-sky-600 bg-sky-400 border-2 p-1 rounded-md" data-elementid={el.id} id={el.id} onClick={(e) => handleRemove(e)}>
           remove
         </button>
       </td>
