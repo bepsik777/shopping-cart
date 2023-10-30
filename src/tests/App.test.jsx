@@ -1,13 +1,14 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 import Router from "../components/Router";
 
 describe("App component", () => {
-  it.only("Renders correctly", async () => {
+  it("Renders correctly", async () => {
     render(<App />, { wrapper: Router });
-    const home = await screen.getByText(/I am Home/i).toBeInTheDocument();
+    const home = await screen.findByText(/I am Home/i);
+    screen.debug()
     expect(home).toBeInTheDocument();
   });
 
@@ -15,13 +16,10 @@ describe("App component", () => {
     render(<App />, { wrapper: Router });
     const user = userEvent.setup();
 
-    await waitFor(() =>
-      expect(screen.getByText(/I am Home/i)).toBeInTheDocument()
-    );
-
     const link = screen.getByRole("link", { name: "Shop" });
     await user.click(link);
-    expect(screen.getByText("title1")).toBeInTheDocument();
+    const buttons = screen.getAllByRole('button', {name: "Add to cart"})
+    expect(buttons[0]).toBeInTheDocument()
   });
 
   it("Render cart when clicked on cart link", async () => {

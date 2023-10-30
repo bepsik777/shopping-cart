@@ -11,9 +11,9 @@ describe("item card component", () => {
 
   it("renders card component", () => {
     rrd.useOutletContext.mockReturnValue([mockData, null, mockedSetCart]);
-    rrd.useLoaderData.mockReturnValue(mockData[0]);
+    rrd.useParams.mockReturnValue({item: 1});
     render(<ItemCard />);
-
+    screen.debug()
     expect(screen.getByText("title1")).toBeInTheDocument();
   });
 

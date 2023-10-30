@@ -4,6 +4,7 @@ const mockData = [
      title: "title1",
      description: "ble ble ble",
      price: 10,
+     image: 'some/mock/url'
    },
    {
      id: 2,
