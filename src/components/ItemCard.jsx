@@ -1,10 +1,12 @@
-import { useLoaderData, useOutletContext } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 
 const ItemCard = () => {
   const [amount, setAmount] = useState(0)
-  const [, , setCart] = useOutletContext()
-  const item = useLoaderData()
+  const [list, , setCart] = useOutletContext()
+  const param = useParams()
+  const filteredList = list.filter(el => el.id == param.item )
+  const item = filteredList[0]
 
   const handleIncrease = () => {
     const newAmount = amount + 1;
