@@ -17,7 +17,7 @@ const Card = ({ item, addToCart }) => {
   };
 
   return (
-    <main>
+    <div>
       <Link to={`${item.id}`}>
         <img
           src={item.image ? item.image : ""}
@@ -69,7 +69,7 @@ const Card = ({ item, addToCart }) => {
       >
         Add to cart
       </button>
-    </main>
+    </div>
   );
 };
 
