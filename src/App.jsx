@@ -16,7 +16,10 @@ function App() {
     fetch("https://fakestoreapi.com/products", {
       signal: signal,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log('hello')
+        return res.json()
+      })
       .then((json) => {
         console.log(json)
         setList(json)

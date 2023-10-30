@@ -19,6 +19,8 @@ const ItemCard = () => {
     setAmount(newAmount)
   }
   
+  console.log(item)
+
   return (
     <main className="bg-white flex grow items-center justify-center py-20 lg:py-10 lg:px-20 ">
       <div className="px-2 flex flex-col bg-white lg:flex-row lg:h-full lg:justify-center lg:items-center">

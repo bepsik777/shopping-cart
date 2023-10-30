@@ -27,9 +27,9 @@ const Router = () => {
         {
           path: "/shop/:item",
           element: <ItemCard></ItemCard>,
-          loader: async ({params}) => {
-            return fetch(`https://fakestoreapi.com/products/${params.item}`)
-          }
+          // loader: async ({params}) => {
+          //   return fetch(`https://fakestoreapi.com/products/${params.item}`)
+          // }
         }
       ]
     },
