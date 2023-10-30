@@ -5,7 +5,7 @@ TO DO:
 - implement the different states and pass the props             *DONE*
  # Add the remove from cart function in cart.jsx                *DONE*
 - add propTypes                                                 *DONE*
-- test 
+- test                                                          *DONE*
 - create an error page
 - finish styling
 
