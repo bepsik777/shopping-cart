@@ -4,17 +4,17 @@ import Home from "./Home";
 import Shop from "./Shop";
 import Cart from "./Cart";
 import ItemCard from "./ItemCard";
-
+import ErrorPage from "./ErrorPage";
 
 const Router = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App/>,
+      element: <App />,
       children: [
         {
           index: true,
-          element: <Home></Home>
+          element: <Home></Home>,
         },
         {
           path: "/shop",
@@ -22,21 +22,18 @@ const Router = () => {
         },
         {
           path: "/cart",
-          element: <Cart></Cart>
+          element: <Cart></Cart>,
         },
         {
           path: "/shop/:item",
           element: <ItemCard></ItemCard>,
-          // loader: async ({params}) => {
-          //   return fetch(`https://fakestoreapi.com/products/${params.item}`)
-          // }
-        }
-      ]
+          errorElement: <ErrorPage/>,
+        },
+      ],
     },
   ]);
-  console.log(router.routes)
 
-  return <RouterProvider router={router}/>
+  return <RouterProvider router={router} />;
 };
 
-export default Router
+export default Router;

@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ErrorPage from "./components/ErrorPage";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -8,6 +9,8 @@ function App() {
   const [list, setList] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -18,19 +21,32 @@ function App() {
     })
       .then((res) => {
         console.log('hello')
+        if (res.status >= 400) {
+          throw new Error('This is error')
+        }
         return res.json()
       })
       .then((json) => {
         console.log(json)
         setList(json)
+        setError(false)
         setLoading(false)
       })
       .catch((err) => {
         if (err.name === "AbortError") {
           console.log("Aborted Succesfully");
+        } else 
+        {
+          console.log(err.status)
+          setError(true)
+          setLoading(false)
         }
       });
-    return () => controller.abort();
+    return () => {
+      controller.abort()
+      setLoading(true);
+      setError(false)
+    };
   }, []);
 
   const addToCart = (item, amount, setAmount) => {
@@ -52,7 +68,7 @@ function App() {
     <div className="bg-rose-600 min-h-screen max-w-screen flex flex-col">
       <Header list={cart}></Header>
       {/* <Outlet context={[list, setList, cart, setCart]} /> */}
-      {loading ? <div className="flex grow justify-center items-center text-3xl">Loading...</div> : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
+      {loading ? <div className="flex grow justify-center items-center text-3xl">Loading...</div> : error ? <ErrorPage/>  : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
       <Footer></Footer>
     </div>
   );
