@@ -1,4 +1,4 @@
-Welcom to my a mock shopping cart! 
+Welcom to my mock shopping cart! 
 
 This is a project from theodinproject.com [https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart]
 
