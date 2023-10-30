@@ -52,7 +52,7 @@ function App() {
     <div className="bg-rose-600 min-h-screen max-w-screen flex flex-col">
       <Header list={cart}></Header>
       {/* <Outlet context={[list, setList, cart, setCart]} /> */}
-      {loading ? <div>Loading...</div> : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
+      {loading ? <div className="flex grow justify-center items-center text-3xl">Loading...</div> : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
       <Footer></Footer>
     </div>
   );
