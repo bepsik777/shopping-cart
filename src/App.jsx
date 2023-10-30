@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [list, setList] = useState([]);
   const [cart, setCart] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -20,7 +20,7 @@ function App() {
       .then((json) => {
         console.log(json)
         setList(json)
-        setLoading(true)
+        setLoading(false)
       })
       .catch((err) => {
         if (err.name === "AbortError") {
@@ -49,7 +49,7 @@ function App() {
     <div className="bg-rose-600 min-h-screen max-w-screen flex flex-col">
       <Header list={cart}></Header>
       {/* <Outlet context={[list, setList, cart, setCart]} /> */}
-      {!loading ? <div>Loading...</div> : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
+      {loading ? <div>Loading...</div> : <Outlet context={[list, setList, addToCart, cart, setCart]}></Outlet>}
       <Footer></Footer>
     </div>
   );
