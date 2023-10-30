@@ -13,7 +13,11 @@ The tools i have used:
 - propTypes for type checking 
 
 preview: 
-![Alt text](screenshots/preview1.png) ![Alt text](screenshots/preview2.png) ![Alt text](screenshots/preview3.png)
+![Alt text](screenshots/preview1.png) 
+
+![Alt text](screenshots/preview2.png) 
+
+![Alt text](screenshots/preview3.png)
 
 
 The design is very raw, but i may revisit this app when i will create my portfolio. 
