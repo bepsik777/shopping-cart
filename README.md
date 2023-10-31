@@ -34,7 +34,7 @@ TO DO:
 - Find all the states of the app and where they live           *DONE*
 - fetch the data from external api                             *DONE*
 - implement the different states and pass the props            *DONE*
- # Add the remove from cart function in cart.jsx               *DONE*
+- Add the remove from cart function in cart.jsx                *DONE*
 - add propTypes                                                *DONE*
 - test                                                         *DONE*
 - create an error page                                         *DONE*
